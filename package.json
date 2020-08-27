@@ -1,0 +1,19 @@
+{
+  "name": "bugem",
+  "version": "1.0.0",
+  "description": "일반인이 쉽게 dj가 되어 음악을 들려주는 실시간 스트리밍 서비스",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ParkEunwoo/bugem.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ParkEunwoo/bugem/issues"
+  },
+  "homepage": "https://github.com/ParkEunwoo/bugem#readme"
+}
