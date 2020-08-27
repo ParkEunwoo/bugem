@@ -3,6 +3,7 @@ const app = express();
 const server = require("http").createServer(app);
 const session = require('express-session');
 const path = require('path');
+const {v4:uuidV4} = require('uuid');
 
 const {connectSocket} = require('./socket.js');
 const {initPassport} = require('./passport.js');
@@ -45,6 +46,16 @@ module.exports = {
     app.get('/', (req, res) => {
       res.sendFile(path.resolve(__dirname, '../public/index.html'));
     })
+
+    app.post("/createRoom", (req, res) => {
+      const roomId = uuidV4();
+
+      res.redirect(`/${roomId}`);
+    });
+
+    app.get("/:roomId", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "../public/room.html"));
+    });
     
     server.listen(PORT, () => {
       console.log(`listening ${PORT} port`);
