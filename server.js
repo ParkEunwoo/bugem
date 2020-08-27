@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const server = require("http").createServer(app);
+const {connectSocket} = require("./src/socket.js");
+
+connectSocket(server);
 
 app.use(express.static("public"));
 
