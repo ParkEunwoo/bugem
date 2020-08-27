@@ -19,7 +19,11 @@ module.exports = {
       saveUninitialized: true,
     }))
     connectSocket(server);
-    initPassport(app);
+
+    const passport = initPassport(app);
+
+    app.use(passport.initialize());
+    app.use(passport.session());
 
     app.get("/debug", (req, res) => {
       res.json({
