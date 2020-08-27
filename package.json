@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ParkEunwoo/bugem/issues"
   },
-  "homepage": "https://github.com/ParkEunwoo/bugem#readme"
+  "homepage": "https://github.com/ParkEunwoo/bugem#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
