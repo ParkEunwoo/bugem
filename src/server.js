@@ -19,9 +19,10 @@ module.exports = {
       resave: true,
       saveUninitialized: true,
     }))
+    app.use(express.urlencoded({ extended: true }))
     connectSocket(server);
 
-    const passport = initPassport(app);
+    const passport = initPassport();
 
     app.use(passport.initialize());
     app.use(passport.session());
