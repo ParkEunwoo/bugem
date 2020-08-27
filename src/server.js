@@ -5,6 +5,7 @@ const session = require('express-session');
 
 const {connectSocket} = require('./socket.js');
 const {initPassport} = require('./passport.js');
+const db = require('./db.js');
 
 const PORT = 3000;
 
