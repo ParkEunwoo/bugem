@@ -14,29 +14,32 @@ myPeer.on("open", (id) => {
   socket.emit("join-room", ROOM_ID, id);
 });
 
-navigator.mediaDevices
-  .getUserMedia({
-    video: true,
-    audio: true,
-  })
-  .then((stream) => {
-    addVideoStream(myVideo, stream);
+const isHost = location.hash;
+if(isHost) {
+  navigator.mediaDevices
+    .getUserMedia({
+      video: true,
+      audio: true,
+    })
+    .then((stream) => {
+      addVideoStream(myVideo, stream);
 
-    myPeer.on("call", (call) => {
-      call.answer(stream);
-      const userVideo = document.createElement("video");
-
-      call.on("stream", (userVideoStream) => {
-        addVideoStream(userVideo, userVideoStream);
+      socket.on("user-connected", (userId) => {
+        connectToNewUser(userId, stream);
       });
-    });
+    })
+    .catch((error) => console.error(error));
+}
+else {
+  myPeer.on("call", (call) => {
+    call.answer()
+    const userVideo = document.createElement("video");
 
-    socket.on("user-connected", (userId) => {
-      connectToNewUser(userId, stream);
+    call.on("stream", (userVideoStream) => {
+      addVideoStream(userVideo, userVideoStream);
     });
-  })
-  .catch((error) => console.error(error));
-
+  });
+}
 socket.on("user-disconnected", (userId) => {
   if (peers[userId]) {
     peers[userId].close();
