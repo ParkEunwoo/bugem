@@ -15,7 +15,6 @@ router.get("/join/:channelId", (req, res) => {
 });
 
 router.get('/recommand-list', (req, res) => {
-  console.log('hi')
   res.json([new Channel({title:'aa', category:'bb', thumbnail:'dd'}), new Channel({title: 'bb'})])
 })
 
