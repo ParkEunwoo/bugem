@@ -19,7 +19,8 @@ module.exports = {
 
         socket.on("disconnect", () => {
           if(channel.leave(name)) {
-            removeChannel(channel)
+            removeChannel(channel);
+            socket.to(roomId).broadcast.emit("close-room");
           }
           socket.to(roomId).broadcast.emit("user-disconnected", userId);
         });
