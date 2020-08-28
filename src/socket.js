@@ -9,8 +9,8 @@ module.exports = {
       socket.on("join-room", (roomId, userId, name) => {
         socket.join(roomId);
         const channel = getChannel(roomId);
-        
         channel.join(name)
+        
         socket.to(roomId).broadcast.emit("user-connected", userId);
     
         socket.on('chat-message', (name, message) => {

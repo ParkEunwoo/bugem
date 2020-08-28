@@ -7,11 +7,18 @@ class Channel {
     this.category = category;
     this.thumbnail = `/thumbnail/${user.name}`;
     this.host = user;
-    this.viewers = [];
+    this.viewerList = [];
   }
   
   join(user) {
+    if(this.host.name === user) {
+      return;
+    }
+    this.viewerList.push(user)
+  }
 
+  get viewers () {
+    return this.viewerList.length;
   }
 }
 
