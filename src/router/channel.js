@@ -14,11 +14,11 @@ const upload = multer({storage})
 const router = express.Router();
 
 const {isAuthenticated} = require('./../passport');
-const {createChannel, recommandList, findChannel, categoryList} = require('../model/channelList');
+const {createChannel, recommandList, findChannel, categoryList, getChannel} = require('../model/channelList');
 const path = require('path')
 
-router.get('/create', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../../public/createChannel.html'));
+router.get('/create', isAuthenticated(), (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../../public/create.html'));
 })
 router.post("/create", isAuthenticated(), upload.single('thumbnail'), (req, res) => {
   const {title, category} = req.body;
@@ -31,6 +31,9 @@ router.post("/create", isAuthenticated(), upload.single('thumbnail'), (req, res)
 router.get("/join/:channelId", isAuthenticated(), (req, res) => {
   res.sendFile(path.resolve(__dirname, "../../public/channel.html"));
 });
+router.get('/info/:channelId', isAuthenticated(), (req, res) => {
+  res.json(getChannel(req.params.channelId))
+})
 
 router.get('/recommand-list', (req, res) => {
   res.json(recommandList())

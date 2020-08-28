@@ -23,6 +23,24 @@ const $messageList = document.getElementById('message-list');
 const $sendMessage = document.getElementById('send-message');
 const $sendButton = document.getElementById('send-button');
 
+$sendMessage.addEventListener('input', () => {
+  if($sendMessage.value === '') {
+    $sendButton.disabled = true;
+  } else {
+    $sendButton.disabled = false;
+  }
+})
+window.addEventListener('keypress', e => {
+  if(e.key === 'Enter') {
+    if($sendMessage.value === ''){
+      $sendMessage.focus();
+      return;
+    }
+    socket.emit('chat-message', name, $sendMessage.value)
+    appendMessage(name, $sendMessage.value)
+    $sendMessage.value = '';
+  }
+})
 $sendButton.addEventListener('click', () => {
   socket.emit('chat-message', name, $sendMessage.value)
   appendMessage(name, $sendMessage.value)
@@ -35,8 +53,13 @@ socket.on('chat-message', (name, message) => {
 
 function appendMessage(name, message) {
   const $message = document.createElement('li');
-  $message.textContent = message;
-  $messageList.appendChild($message);
+  $message.classList.add('message');
+  $message.innerHTML = `
+    <div class="user">${name}</div>
+    <div class="content">${message}</div>
+  `;
+  $messageList.append($message);
+  $messageList.scrollTop = $messageList.scrollHeight;
 }
 
 const isHost = location.hash;
@@ -88,7 +111,17 @@ function connectToNewUser(userId, stream) {
   peers[userId] = call;
 }
 
-const videoContainer = document.getElementById("video-container");
+const $channelContainer = document.getElementById("channel-container");
+fetch(`/channel/info/${ROOM_ID}`).then(response => response.json()).then(channel => {
+  $channelContainer.innerHTML = `
+    <h2 class="title">${channel.title}</h2>
+    <img class="thumbnail" src="${channel.thumbnail}" alt="thumbnail">
+    <div class="info">
+      <h4 class="category">${channel.category}</h4>
+      <h4 class="viewers">시청자 수 ${Object.keys(channel.viewerList).length}</h4>
+    </div>
+    `;
+})
 
 function addVideoStream(video, stream) {
   video.srcObject = stream;
