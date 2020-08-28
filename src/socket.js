@@ -9,6 +9,10 @@ module.exports = {
         socket.join(roomId);
         socket.to(roomId).broadcast.emit("user-connected", userId);
     
+        socket.on('chat-message', (name, message) => {
+          socket.to(roomId).broadcast.emit('chat-message', name, message);
+        })
+
         socket.on("disconnect", () => {
           socket.to(roomId).broadcast.emit("user-disconnected", userId);
         });

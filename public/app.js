@@ -14,6 +14,26 @@ myPeer.on("open", (id) => {
   socket.emit("join-room", ROOM_ID, id);
 });
 
+const $messageList = document.getElementById('message-list');
+const $sendMessage = document.getElementById('send-message');
+const $sendButton = document.getElementById('send-button');
+
+$sendButton.addEventListener('click', () => {
+  socket.emit('chat-message', 'hh', $sendMessage.value)
+  appendMessage("hh", $sendMessage.value)
+  $sendMessage.value = '';
+})
+
+socket.on('chat-message', (name, message) => {
+  appendMessage(name, message)
+})
+
+function appendMessage(name, message) {
+  const $message = document.createElement('li');
+  $message.textContent = message;
+  $messageList.appendChild($message);
+}
+
 const isHost = location.hash;
 if(isHost) {
   navigator.mediaDevices
