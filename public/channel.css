@@ -5,13 +5,19 @@ body {
 }
 #channel-container {
   flex: 1;
+  padding: 3rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
 }
 .title {
-
 }
 .thumbnail{
-  width: 400px;
-  height: 400px;
+  width: 50vw;
+  height: 50vw;
+  max-width: 500px;
+  max-height: 500px;
 }
 .category{
 
@@ -53,7 +59,7 @@ body {
 #send-message {
   border: none;
   outline: none;
-  min-width: 50ch;
+  min-width: 20vw;
 }
 
 #send-button {

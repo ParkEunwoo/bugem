@@ -116,8 +116,10 @@ fetch(`/channel/info/${ROOM_ID}`).then(response => response.json()).then(channel
   $channelContainer.innerHTML = `
     <h2 class="title">${channel.title}</h2>
     <img class="thumbnail" src="${channel.thumbnail}" alt="thumbnail">
-    <h4 class="category">${channel.category}</h4>
-    <h4 class="viewers">${Object.keys(channel.viewerList).length}</h4>
+    <div class="info">
+      <h4 class="category">${channel.category}</h4>
+      <h4 class="viewers">시청자 수 ${Object.keys(channel.viewerList).length}</h4>
+    </div>
     `;
 })
 
