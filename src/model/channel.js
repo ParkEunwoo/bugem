@@ -1,5 +1,13 @@
+const {v4:uuidV4} = require('uuid');
+
 class Channel {
+  #title;
+  #category;
+  #thumbnail;
+  #host;
+  #roomName;
   constructor({title, category, thumbnail}, user){
+    this.id = uuidV4();
     this.#title = title;
     this.#category = category;
     this.#thumbnail = thumbnail;
@@ -13,8 +21,8 @@ class Channel {
     return this.#roomName;
   }
 
-  get viewers (io) {
-    return io.sockets.clients(this.roomName).length - 1;
+  get viewers () {
+    return 0;
   }
   
 }
