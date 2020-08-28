@@ -20,5 +20,8 @@ router.get("/join/:channelId", isAuthenticated(), (req, res) => {
 router.get('/recommand-list', (req, res) => {
   res.json([new Channel({title:'aa', category:'bb', thumbnail:'dd'}), new Channel({title: 'bb'})])
 })
+router.get('/search/:keyword', (req, res) => {
+  res.json([new Channel({title:req.params.keyword, category:'bb', thumbnail:'dd'})])
+})
 
 module.exports = router;
