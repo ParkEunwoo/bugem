@@ -7,9 +7,7 @@ class Channel {
     this.category = category;
     this.thumbnail = `/thumbnail/${user.name}`;
     this.host = user;
-  }
-  get viewers () {
-    return 0;
+    this.viewers = 0;
   }
   
 }
