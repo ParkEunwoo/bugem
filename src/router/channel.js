@@ -12,17 +12,21 @@ const storage = multer.diskStorage({
 const upload = multer({storage})
 
 const router = express.Router();
+
 const {isAuthenticated} = require('./../passport');
 const Channel = require('../model/Channel.js')
+const {createChannel} = require('../model/channelList');
 const path = require('path')
 
 router.get('/create', isAuthenticated(), (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../public/createChannel.html'));
 })
 router.post("/create", isAuthenticated(), upload.single('thumbnail'), (req, res) => {
-  const channel = new Channel({title:'제목', category:'분위기', thumbnail:'/ghn.png'}, req.user);
+  const {title, category} = req.body;
+  const {user} = req;
+  const id = createChannel({title, category, user});
 
-  res.redirect(`/channel/join/${channel.id}`);
+  res.redirect(`/channel/join/${id}`);
 });
 
 router.get("/join/:channelId", isAuthenticated(), (req, res) => {
@@ -30,10 +34,10 @@ router.get("/join/:channelId", isAuthenticated(), (req, res) => {
 });
 
 router.get('/recommand-list', (req, res) => {
-  res.json([new Channel({title:'aa', category:'bb', thumbnail:'dd'}), new Channel({title: 'bb'})])
+  res.json([])
 })
 router.get('/search/:keyword', (req, res) => {
-  res.json([new Channel({title:req.params.keyword, category:'bb', thumbnail:'dd'})])
+  res.json([new Channel({title:req.params.keyword, category:'bb', user:{name: 'hello'}})])
 })
 
 module.exports = router;
