@@ -102,7 +102,15 @@ function connectToNewUser(userId, stream) {
   peers[userId] = call;
 }
 
-const videoContainer = document.getElementById("video-container");
+const $channelContainer = document.getElementById("channel-container");
+fetch(`/channel/info/${ROOM_ID}`).then(response => response.json()).then(channel => {
+  $channelContainer.innerHTML = `
+    <h2 class="title">${channel.title}</h2>
+    <img class="thumbnail" src="${channel.thumbnail}" alt="thumbnail">
+    <h4 class="category">${channel.category}</h4>
+    <h4 class="viewers">${Object.keys(channel.viewerList).length}</h4>
+    `;
+})
 
 function addVideoStream(video, stream) {
   video.srcObject = stream;

@@ -3,13 +3,28 @@ body {
   margin: 0;
   height: 100vh;
 }
-#video-container {
+#channel-container {
   flex: 1;
+}
+.title {
+
+}
+.thumbnail{
+  width: 400px;
+  height: 400px;
+}
+.category{
+
+}
+.viewers {
+
 }
 
 .chat-container {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+  margin: 1rem;
 }
 
 .chat-input-form {
@@ -36,6 +51,7 @@ body {
 #send-message {
   border: none;
   outline: none;
+  min-width: 50ch;
 }
 
 #send-button {
