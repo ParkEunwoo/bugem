@@ -13,6 +13,7 @@ const PORT = 3000;
 module.exports = {
   createServer: () => {
     app.use(express.static("public"));
+    app.use('/thumbnail', express.static('uploads'));
     app.use(session({
       name: 'bugem-session',
       secret: 'bugembugem',
@@ -29,7 +30,6 @@ module.exports = {
 
     app.use('/auth', require('./router/auth.js'));
     app.use('/channel', require('./router/channel'));
-
     app.get("/debug", (req, res) => {
       res.json({
         "req.session": req.session, // 세션 데이터
