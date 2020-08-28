@@ -23,6 +23,20 @@ const $messageList = document.getElementById('message-list');
 const $sendMessage = document.getElementById('send-message');
 const $sendButton = document.getElementById('send-button');
 
+$sendMessage.addEventListener('input', () => {
+  if($sendMessage.value === '') {
+    $sendButton.disabled = true;
+  } else {
+    $sendButton.disabled = false;
+  }
+})
+window.addEventListener('keypress', e => {
+  if(e.key === 'Enter') {
+    socket.emit('chat-message', name, $sendMessage.value)
+    appendMessage(name, $sendMessage.value)
+    $sendMessage.value = '';
+  }
+})
 $sendButton.addEventListener('click', () => {
   socket.emit('chat-message', name, $sendMessage.value)
   appendMessage(name, $sendMessage.value)
