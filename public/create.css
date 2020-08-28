@@ -1,3 +1,43 @@
 .create-form {
-  
+  display: flex;
+}
+
+.image-container {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#thumbnail-input {
+  display: none;
+}
+#thumbnail-preview {
+  width: 30vw;
+  height: 30vw;
+  min-width: 400px;
+  min-height: 400px;
+}
+
+.thumbnail-button {
+  border: none;
+  outline: none;
+  background: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.thumbnail-button:hover i {
+  color: #222;
+}
+.thumbnail-button i {
+  color: #888;
+  font-size: 3rem;
+}
+
+
+.input-container {
+  flex: 1;
 }
