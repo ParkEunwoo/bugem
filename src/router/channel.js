@@ -7,11 +7,16 @@ const path = require('path')
 router.post("/create", isAuthenticated(), (req, res) => {
   const channel = new Channel({title:'제목', category:'분위기', thumbnail:'/ghn.png'}, req.user);
 
-  res.redirect(`/channel/${channel.id}`);
+  res.redirect(`/channel/join/${channel.id}`);
 });
 
-router.get("/:channelId", (req, res) => {
+router.get("/join/:channelId", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../../public/channel.html"));
 });
+
+router.get('/recommand-list', (req, res) => {
+  console.log('hi')
+  res.json([new Channel({title:'aa', category:'bb', thumbnail:'dd'}), new Channel({title: 'bb'})])
+})
 
 module.exports = router;
