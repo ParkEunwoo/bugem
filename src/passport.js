@@ -3,6 +3,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const {getUser, findUser} = require('./model/User/resolver.js');
 
 module.exports = {
+  passport,
   initPassport: () => {
     passport.serializeUser((user, cb) => {
       cb(null, user._id)
@@ -33,5 +34,5 @@ module.exports = {
     }
 
     next();
-  }
+  },
 }

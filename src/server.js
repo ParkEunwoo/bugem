@@ -28,16 +28,7 @@ module.exports = {
     app.use(passport.initialize());
     app.use(passport.session());
 
-    app.get('/login', (req, res) => {
-      res.sendFile(path.resolve(__dirname, '../public/login.html'));
-    })
-    app.post('/login', passport.authenticate('local'), (req, res, next) => {
-      res.send('로그인 성공')
-    })
-
-    app.get('/register', (req, res) => {
-      res.sendFile(path.resolve(__dirname, '../public/register.html'));
-    })
+    app.use('/auth', require('./router/auth.js'));
 
     app.get("/debug", (req, res) => {
       res.json({
