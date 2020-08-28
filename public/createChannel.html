@@ -11,12 +11,15 @@
 <body>
   <form method="POST" action="/channel/create" enctype="multipart/form-data" class="create-form">
     <div class="image-container">
+      <h2>썸네일</h2>
       <input type="file" name="thumbnail" id="thumbnail-input">
       <img id="thumbnail-preview" src="#" alt="preview">
       <button class="thumbnail-button" id="input-button"><i class="material-icons">add_circle</i></button>
     </div>
     <div class="input-container">
-      <input type="text" name="title" placeholder="제목" class='title-input'>
+      <div class="title-form">
+        <input type="text" name="title" placeholder="제목" class='title-input'>
+      </div>
       <select name="category" id="category">
         <option value="hiphop">힙합</option>
         <option value="ballad">발라드</option>
