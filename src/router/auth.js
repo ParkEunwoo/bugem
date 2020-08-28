@@ -10,6 +10,12 @@ router.get('/login', (req, res) => {
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
   res.send('로그인 성공')
 })
+router.get("/logout", (req, res, next) => {
+  // 로그아웃
+  req.logout()
+
+  res.send("로그아웃 성공")
+})
 
 router.get('/register', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../public/register.html'));
