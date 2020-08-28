@@ -42,9 +42,22 @@ const $repasswordInput = document.getElementById('repassword-input');
 const $passwordCheck = document.getElementById('password-check');
 $repasswordInput.addEventListener('input', () => {
   if($passwordInput.value === $repasswordInput.value) {
+    $passwordCheck.innerHTML = ''
     validation.password = true;
   } else {
     $passwordCheck.innerHTML = '비밀번호를 확인해주세요';
     validation.password = false;
   }
 })
+
+const $registerForm = document.getElementById('register-form');
+$registerForm.addEventListener('submit', (e) => {
+  if(isValidate()) {
+  } else {
+    e.preventDefault();
+  }
+})
+
+function isValidate() {
+  return Object.values(validation).every(v=>v)
+}
