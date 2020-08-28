@@ -18,7 +18,7 @@ const {createChannel, recommandList, findChannel, categoryList} = require('../mo
 const path = require('path')
 
 router.get('/create', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../../public/createChannel.html'));
+  res.sendFile(path.resolve(__dirname, '../../public/create.html'));
 })
 router.post("/create", isAuthenticated(), upload.single('thumbnail'), (req, res) => {
   const {title, category} = req.body;
