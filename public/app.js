@@ -32,6 +32,10 @@ $sendMessage.addEventListener('input', () => {
 })
 window.addEventListener('keypress', e => {
   if(e.key === 'Enter') {
+    if($sendMessage.value === ''){
+      $sendMessage.focus();
+      return;
+    }
     socket.emit('chat-message', name, $sendMessage.value)
     appendMessage(name, $sendMessage.value)
     $sendMessage.value = '';
@@ -49,8 +53,13 @@ socket.on('chat-message', (name, message) => {
 
 function appendMessage(name, message) {
   const $message = document.createElement('li');
-  $message.textContent = message;
-  $messageList.appendChild($message);
+  $message.classList.add('message');
+  $message.innerHTML = `
+    <div class="user">${name}</div>
+    <div class="content">${message}</div>
+  `;
+  $messageList.append($message);
+  $messageList.scrollTop = $messageList.scrollHeight;
 }
 
 const isHost = location.hash;
