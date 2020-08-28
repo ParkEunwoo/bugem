@@ -30,7 +30,7 @@ router.post('/register', (req, res) => {
     userPw: req.body.password,
   }
   createUser(user);
-  res.redirect('/login')
+  res.redirect('/auth/login')
 })
 
 router.get('/check/userid/:userid', async (req, res) => {
