@@ -7,8 +7,11 @@ module.exports = {
 
     io.on("connection", (socket) => {
       socket.on("join-room", (roomId, userId, name) => {
-        socket.join(roomId);
         const channel = getChannel(roomId);
+        if(!channel) {
+          return;
+        }
+        socket.join(roomId);
         channel.join(name)
         
         socket.to(roomId).broadcast.emit("user-connected", userId);

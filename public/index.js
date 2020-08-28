@@ -6,18 +6,24 @@ fetch('/auth/session').then(response => response.json()).then(data => {
   $loginInfo.innerHTML = `<a href="auth/login" class="login">로그인</a>`
 })
 
+function channelHtml(channel) {
+  return `<a href="/channel/join/${channel.id}" class="channel-wrapper">
+  <div class="channel">
+    <h3 class="channel-title">${channel.title}</h3>
+    <img class="channel-thumbnail" alt="thumbnail" src="${channel.thumbnail}">
+    <div class="channel-info">
+      <h4>${channel.category}</h4>
+      <h4>시청자 수 ${Object.keys(channel.viewerList).length}</h4>
+    </div>
+  </div>
+</a>`
+}
+
 const $recommandContainer = document.getElementById('recommand-channel');
 
 fetch('/channel/recommand-list').then(response => response.json()).then(data => {
   if(Array.isArray(data)) {
-    $recommandContainer.innerHTML = data.reduce((htmlString, channel) => `${htmlString}
-      <a href="/channel/join/${channel.id}">
-        <div>
-          <h3>${channel.title}</h3>
-        
-        </div>
-      </a>
-    `, '')
+    $recommandContainer.innerHTML = data.reduce((htmlString, channel) => `${htmlString}${channelHtml(channel)}`, '')
   }
 })
 
@@ -28,14 +34,7 @@ const $searchContainer = document.getElementById('search-channel')
 $searchButton.addEventListener('click', () => {
   fetch(`/channel/search/${$searchInput.value}`).then(response => response.json()).then(data => {
     if(Array.isArray(data)) {
-      $searchContainer.innerHTML = data.reduce((htmlString, channel) => `${htmlString}
-        <a href="/channel/join/${channel.id}">
-          <div>
-            <h3>${channel.title}</h3>
-          
-          </div>
-        </a>
-      `, '')
+      $searchContainer.innerHTML = data.reduce((htmlString, channel) => `${htmlString}${channelHtml(channel)}`, '')
     }
   })
 })
