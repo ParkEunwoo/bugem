@@ -1,0 +1,58 @@
+.register-form {
+  width: 30vw;
+  min-width: 60ch;
+  border: 1px solid black;
+}
+.register-input-form {
+  width: 50%;
+  margin: 1rem 1rem 0.5rem 1rem;
+  border: 1px solid #dadce0;
+  border-radius: 0.2em;
+  padding: 0.5em;
+}
+
+.register-input-form:hover {
+  border-color: black;
+}
+.register-input-form:focus-within {
+  border-color: #00796b;
+}
+
+.register-input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.validated {
+  border-color: #03c75a;
+  color: #03c75a;
+  margin-left: 1rem;
+  font-size: 0.75rem;
+}
+
+.non-validated {
+  border-color: #ff1616;
+  color: #ff1616;
+  margin-left: 1rem;
+  font-size: 0.75rem;
+}
+
+.submit-button {
+  border: 1px solid black;
+  background-color: white;
+  border-color: #00796b;
+  color: #00796b;
+  width: 53%;
+  padding: 0.5em 1rem;
+  margin: 1rem 1rem 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.submit-button:hover {
+  border-color: #03c75a;
+  color: #03c75a;
+}
+.submit-button:focus {
+  outline: none;
+}
