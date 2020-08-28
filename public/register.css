@@ -1,0 +1,25 @@
+.register-form {
+  width: 30vw;
+  min-width: 60ch;
+  border: 1px solid black;
+}
+.register-input-form {
+  width: 50%;
+  margin: 1rem 1rem;
+  border: 1px solid #dadce0;
+  border-radius: 0.2em;
+  padding: 0.5em;
+}
+
+.register-input-form:hover {
+  border-color: black;
+}
+.register-input-form:focus-within {
+  border-color: #00796b;
+}
+
+.register-input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
