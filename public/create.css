@@ -56,7 +56,7 @@ body {
 
 .title-form {
   margin: 0 1rem;
-  border: 1px solid #dadce0;
+  border: 2px solid #dadce0;
   border-radius: 0.2em;
 }
 
@@ -72,4 +72,11 @@ body {
   padding: 0.4em;
   border: none;
   outline: none;
+}
+
+.category-select {
+  margin: 2rem 1rem;
+  font-size: 1.5rem;
+  padding: 0.4em;
+  outline-color: #00796b;
 }
