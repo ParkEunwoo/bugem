@@ -4,7 +4,7 @@ const channelList = [];
 function createChannel({title, category, user}) {
   const channel = new Channel({title, category, user});
   channelList.push(channel);
-
+  
   return channel.id;
 }
 
@@ -28,9 +28,14 @@ function categoryList(category) {
   return list;
 }
 
+function getChannel(id) {
+  return channelList.find(channel => channel.id === id);
+}
+
 module.exports = {
   createChannel,
   recommandList,
   findChannel,
   categoryList,
+  getChannel,
 }

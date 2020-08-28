@@ -1,4 +1,5 @@
 const socketIO = require('socket.io');
+const {getChannel} = require('./model/channelList');
 
 module.exports = {
   connectSocket: (server) => {
@@ -7,6 +8,9 @@ module.exports = {
     io.on("connection", (socket) => {
       socket.on("join-room", (roomId, userId) => {
         socket.join(roomId);
+        
+        const channel = getChannel(roomId);
+        
         socket.to(roomId).broadcast.emit("user-connected", userId);
     
         socket.on('chat-message', (name, message) => {

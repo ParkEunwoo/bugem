@@ -1,4 +1,4 @@
-const ROOM_ID = location.pathname.substring(1);
+const ROOM_ID = location.pathname.split('/').pop();
 const socket = io("/");
 
 const myPeer = new Peer(undefined, {
