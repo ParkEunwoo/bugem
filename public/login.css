@@ -2,16 +2,59 @@
   display: flex;
   flex-direction: column;
   width: 30ch;
-
 }
 .id-input {
+  border: 1px solid #dadce0;
+  border-radius: 0.2em;
+  padding: 1em;
+  margin: 0.5rem 1rem;
 }
 .password-input {
-
+  border: 1px solid #dadce0;
+  border-radius: 0.2em;
+  padding: 1em;
+  margin: 0.5rem 1rem;
+}
+.id-input:hover {
+  border-color: black;
+}
+.id-input:focus-within {
+  outline: none;
+  border-color: #00796b;
+}
+.password-input:hover {
+  border-color: black;
+}
+.password-input:focus-within {
+  outline: none;
+  border-color: #00796b;
 }
 .login-button {
-
+  border: 1px solid black;
+  background-color: white;
+  border-color: #00796b;
+  border-radius: 0.2em;
+  color: #00796b;
+  padding: 0.5em;
+  margin: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
 }
-.register-link {
+.login-button:focus {
+  outline: none;
+}
+.register-container {
+  width: 30ch;
+  text-align: center;
+}
+.register-link:link {
+  color: #00796b;
+  text-decoration: none;
+  font-size: 0.75rem;
+}
 
+.register-link:visited {
+  color: #00796b;
+  text-decoration: none;
+  font-size: 0.75rem;
 }
