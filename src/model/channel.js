@@ -7,9 +7,12 @@ class Channel {
     this.category = category;
     this.thumbnail = `/thumbnail/${user.name}`;
     this.host = user;
-    this.viewers = 0;
+    this.viewers = [];
   }
   
+  join(user) {
+
+  }
 }
 
 module.exports = Channel;
