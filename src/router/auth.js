@@ -1,7 +1,7 @@
 const express = require('express'); 
 const router = express.Router();
 const {passport} = require('./../passport');
-const {createUser} = require('./../model/User/resolver')
+const {createUser, isExistId, isExistName} = require('./../model/User/resolver')
 const path = require('path')
 
 router.get('/login', (req, res) => {
@@ -22,6 +22,15 @@ router.post('/register', (req, res) => {
   }
   createUser(user);
   res.send('회원가입 완료')
+})
+
+router.get('/check/userid/:userid', async (req, res) => {
+  const isExist = await isExistId(req.params.userid);
+  res.json(isExist);
+})
+router.get('/check/name/:name', async (req, res) => {
+  const isExist = await isExistName(req.params.name);
+  res.json(isExist);
 })
 
 module.exports = router;

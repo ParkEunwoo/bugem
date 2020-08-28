@@ -18,6 +18,26 @@ async function getUser(id) {
   }
 }
 
+async function isExistId(userId) {
+  try {
+    const users = await User.find({userId});
+    return users.length > 0;
+  } catch(e) {
+    console.log(e);
+    return null;
+  }
+}
+
+async function isExistName(name) {
+  try {
+    const users = await User.find({name});
+    return users.length > 0;
+  } catch(e) {
+    console.log(e);
+    return null;
+  }
+}
+
 async function createUser(user) {
   try {
     const userModel = new User();
@@ -46,4 +66,6 @@ module.exports = {
   getUser,
   createUser,
   findUser,
+  isExistId,
+  isExistName,
 }
