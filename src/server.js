@@ -35,6 +35,10 @@ module.exports = {
       res.send('로그인 성공')
     })
 
+    app.get('/register', (req, res) => {
+      res.sendFile(path.resolve(__dirname, '../public/register.html'));
+    })
+
     app.get("/debug", (req, res) => {
       res.json({
         "req.session": req.session, // 세션 데이터
