@@ -33,7 +33,8 @@ function getChannel(id) {
 }
 
 function removeChannel(channel) {
-
+  const index = channelList.indexOf(({id}) => id === channel.id);
+  channelList.splice(index, 1);
 }
 
 module.exports = {
