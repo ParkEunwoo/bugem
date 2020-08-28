@@ -4,18 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined">
+  <link rel="stylesheet" href="/create.css">
+  <script src="/create.js" defer></script>
 </head>
 <body>
-  <form method="POST" action="/channel/create" enctype="multipart/form-data" id="form">
-    <input type="text" name="title" placeholder="제목">
-    <select name="category" id="category">
-      <option value="힙합">힙합</option>
-      <option value="발라드">발라드</option>
-      <option value="댄스">댄스</option>
-    </select>
-    <input type="file" name="thumbnail" id="thumbnail-input">
-    <img id="thumbnail-preview" src="" alt="">
-    <input type="submit" value="채널 생성" />
+  <form method="POST" action="/channel/create" enctype="multipart/form-data" class="create-form">
+    <div class="image-container">
+      <h2>썸네일</h2>
+      <input type="file" name="thumbnail" id="thumbnail-input">
+      <img id="thumbnail-preview" src="#" alt="preview">
+      <button class="thumbnail-button" id="input-button"><i class="material-icons">add_circle</i></button>
+    </div>
+    <div class="input-container">
+      <div class="title-form">
+        <input type="text" name="title" placeholder="제목" class='title-input'>
+      </div>
+      <select name="category" id="category" class="category-select">
+        <option value="hiphop">힙합</option>
+        <option value="ballad">발라드</option>
+        <option value="dance">댄스</option>
+      </select>
+      <input type="submit" value="채널 생성" class="create-button" />
+    </div>
   </form>
 </body>
 </html>

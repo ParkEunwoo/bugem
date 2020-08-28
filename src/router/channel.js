@@ -17,7 +17,7 @@ const {isAuthenticated} = require('./../passport');
 const {createChannel, recommandList, findChannel, categoryList} = require('../model/channelList');
 const path = require('path')
 
-router.get('/create', isAuthenticated(), (req, res) => {
+router.get('/create', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../public/createChannel.html'));
 })
 router.post("/create", isAuthenticated(), upload.single('thumbnail'), (req, res) => {
