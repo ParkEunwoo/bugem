@@ -1,7 +1,7 @@
 const $loginInfo = document.getElementById('login-info');
 
 fetch('/auth/session').then(response => response.json()).then(data => {
-  $loginInfo.innerHTML = `<div>${data}<form action="/auth/logout" method="post"><input type="submit" value="로그아웃"></form></div>`;
+  $loginInfo.innerHTML = `<a href="/channel/create" class="create-channel">채널 생성</a><div class="user">${data}</div><form action="/auth/logout" method="post"><input type="submit" value="로그아웃"></form>`;
 }).catch(e => {
   $loginInfo.innerHTML = `<a href="auth/login">로그인/회원가입</a>`
 })
