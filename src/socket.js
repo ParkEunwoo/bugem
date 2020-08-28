@@ -1,5 +1,5 @@
 const socketIO = require('socket.io');
-const {getChannel} = require('./model/channelList');
+const {getChannel, removeChannel} = require('./model/channelList');
 
 module.exports = {
   connectSocket: (server) => {
@@ -18,6 +18,9 @@ module.exports = {
         })
 
         socket.on("disconnect", () => {
+          if(channel.leave(name)) {
+            removeChannel(channel)
+          }
           socket.to(roomId).broadcast.emit("user-disconnected", userId);
         });
       });

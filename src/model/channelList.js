@@ -32,10 +32,15 @@ function getChannel(id) {
   return channelList.find(channel => channel.id === id);
 }
 
+function removeChannel(channel) {
+
+}
+
 module.exports = {
   createChannel,
   recommandList,
   findChannel,
   categoryList,
   getChannel,
+  removeChannel,
 }
