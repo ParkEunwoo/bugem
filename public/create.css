@@ -80,3 +80,16 @@ body {
   padding: 0.4em;
   outline-color: #00796b;
 }
+
+.create-button {
+  background: #00796b;
+  border: none;
+  border-radius: 0.4em;
+  font-size: 1.5rem;
+  padding: 0.4em;
+  margin: 0 1rem;
+  color: white;
+}
+.create-button:hover {
+  box-shadow: 0 0 1rem 0.4rem #ccc;
+}
