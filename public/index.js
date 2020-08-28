@@ -1,3 +1,11 @@
+const $loginInfo = document.getElementById('login-info');
+
+fetch('/auth/session').then(response => response.json()).then(data => {
+  $loginInfo.innerHTML = `<div>${data}<form action="/auth/logout" method="post"><input type="submit" value="로그아웃"></form></div>`;
+}).catch(e => {
+  $loginInfo.innerHTML = `<a href="auth/login">로그인/회원가입</a>`
+})
+
 const $recommandContainer = document.getElementById('recommand-channel');
 
 fetch('/channel/recommand-list').then(response => response.json()).then(data => {
