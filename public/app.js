@@ -16,17 +16,23 @@ myPeer.on("open", (id) => {
 
 const $messageList = document.getElementById('message-list');
 const $sendMessage = document.getElementById('send-message');
-const $sendButton = document.getElementByIdI('send-button');
+const $sendButton = document.getElementById('send-button');
 
 $sendButton.addEventListener('click', () => {
-  socket.emit('chat-message', $sendMessage.value)
+  socket.emit('chat-message', 'hh', $sendMessage.value)
+  appendMessage("hh", $sendMessage.value)
+  $sendMessage.value = '';
 })
 
-socket.on('chat-message', (user, message) => {
+socket.on('chat-message', (name, message) => {
+  appendMessage(name, message)
+})
+
+function appendMessage(name, message) {
   const $message = document.createElement('li');
   $message.textContent = message;
   $messageList.appendChild($message);
-})
+}
 
 const isHost = location.hash;
 if(isHost) {
