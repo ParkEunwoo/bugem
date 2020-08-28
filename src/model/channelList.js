@@ -15,7 +15,9 @@ function recommandList() {
 }
 
 function findChannel(keyword) {
-  const findList = channelList.filter()
+  const findList = channelList.filter(channel => {
+    return channel.title === keyword || channel.host.name === keyword;
+  })
 
   return findList;
 }

@@ -14,7 +14,7 @@ const upload = multer({storage})
 const router = express.Router();
 
 const {isAuthenticated} = require('./../passport');
-const {createChannel, recommandList} = require('../model/channelList');
+const {createChannel, recommandList, findChannel} = require('../model/channelList');
 const path = require('path')
 
 router.get('/create', isAuthenticated(), (req, res) => {
@@ -36,7 +36,7 @@ router.get('/recommand-list', (req, res) => {
   res.json(recommandList())
 })
 router.get('/search/:keyword', (req, res) => {
-  res.json([])
+  res.json(findChannel(req.params.keyword))
 })
 
 module.exports = router;
