@@ -22,8 +22,15 @@ function findChannel(keyword) {
   return findList;
 }
 
+function categoryList(category) {
+  const list = channelList.filter(channel => channel.category === category);
+
+  return list;
+}
+
 module.exports = {
   createChannel,
   recommandList,
   findChannel,
+  categoryList,
 }
