@@ -6,15 +6,15 @@
   <title>Document</title>
 </head>
 <body>
-  <form method="POST" action="/channel/create" enctype="multipart/form-data" id="form">
-    <input type="text" name="title" placeholder="제목">
+  <form method="POST" action="/channel/create" enctype="multipart/form-data" class="create-form">
+    <input type="text" name="title" placeholder="제목" class='title-input'>
     <select name="category" id="category">
-      <option value="힙합">힙합</option>
-      <option value="발라드">발라드</option>
-      <option value="댄스">댄스</option>
+      <option value="hiphop">힙합</option>
+      <option value="ballad">발라드</option>
+      <option value="dance">댄스</option>
     </select>
-    <input type="file" name="thumbnail" id="thumbnail">
-    <input type="submit" value="채널 생성" />
+    <input type="file" name="thumbnail" id="thumbnail" class="file-input">
+    <input type="submit" value="채널 생성" class="create-button" />
   </form>
 </body>
 </html>
