@@ -4,12 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register</title>
+  <link rel="stylesheet" href="/register.css">
+  <script src="/register.js" defer></script>
 </head>
 <body>
   <form action="/auth/register" method="post">
-    <input type="text" name="username" placeholder="아이디">
-    <input type="text" name="name" placeholder="이름">
-    <input type="password" name="password" placeholder="비밀번호">
+    <input id="id-input" type="text" name="username" placeholder="아이디" autocomplete="false">
+    <div id="id-check"></div>
+    <input id="name-input" type="text" name="name" placeholder="이름" autocomplete="false">
+    <div id="name-check"></div>
+    <input id="password-input" type="password" name="password" placeholder="비밀번호" autocomplete="false">
+    <input id="repassword-input" type="password" name="repassword" placeholder="비밀번호 확인" autocomplete="false">
+    <div id="password-check"></div>
     <input type="submit" value="회원가입">
   </form>
 </body>
