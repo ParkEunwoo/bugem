@@ -11,13 +11,13 @@ router.get('/login', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../public/login.html'));
 })
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
-  res.send('로그인 성공')
+  res.redirect('/');
 })
 router.get("/logout", (req, res, next) => {
   // 로그아웃
   req.logout()
 
-  res.send("로그아웃 성공")
+  res.redirect('/')
 })
 
 router.get('/register', (req, res) => {
@@ -30,7 +30,7 @@ router.post('/register', (req, res) => {
     userPw: req.body.password,
   }
   createUser(user);
-  res.send('회원가입 완료')
+  res.redirect('/login')
 })
 
 router.get('/check/userid/:userid', async (req, res) => {
