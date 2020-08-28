@@ -32,10 +32,16 @@ function getChannel(id) {
   return channelList.find(channel => channel.id === id);
 }
 
+function removeChannel(channel) {
+  const index = channelList.indexOf(({id}) => id === channel.id);
+  channelList.splice(index, 1);
+}
+
 module.exports = {
   createChannel,
   recommandList,
   findChannel,
   categoryList,
   getChannel,
+  removeChannel,
 }

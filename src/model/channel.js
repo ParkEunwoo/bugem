@@ -7,18 +7,25 @@ class Channel {
     this.category = category;
     this.thumbnail = `/thumbnail/${user.name}`;
     this.host = user;
-    this.viewerList = [];
+    this.viewerList = {};
   }
   
   join(user) {
     if(this.host.name === user) {
       return;
     }
-    this.viewerList.push(user)
+    this.viewerList[user] = true;
+  }
+  leave(user) {
+    if(this.host.name === user) {
+      return true;
+    }
+    delete this.viewerList[user];
+    return false;
   }
 
   get viewers () {
-    return this.viewerList.length;
+    return Object.keys(this.viewerList).length;
   }
 }
 

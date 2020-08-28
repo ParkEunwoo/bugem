@@ -1,9 +1,6 @@
 const ROOM_ID = location.pathname.split('/').pop();
 const socket = io("/");
 let name;
-fetch('/auth/session').then(response => response.json()).then(data => {
-  name = data;
-})
 
 const myPeer = new Peer(undefined, {
   host: "/",
@@ -15,7 +12,11 @@ const myVideo = document.createElement("video");
 myVideo.muted = true;
 
 myPeer.on("open", (id) => {
-  socket.emit("join-room", ROOM_ID, id, name);
+  fetch('/auth/session').then(response => response.json()).then(data => {
+    name = data;
+  }).then(() => {
+    socket.emit("join-room", ROOM_ID, id, name);
+  })
 });
 
 const $messageList = document.getElementById('message-list');
@@ -24,7 +25,7 @@ const $sendButton = document.getElementById('send-button');
 
 $sendButton.addEventListener('click', () => {
   socket.emit('chat-message', name, $sendMessage.value)
-  appendMessage("hh", $sendMessage.value)
+  appendMessage(name, $sendMessage.value)
   $sendMessage.value = '';
 })
 
@@ -69,6 +70,9 @@ socket.on("user-disconnected", (userId) => {
     peers[userId].close();
   }
 });
+socket.on('close-room', () => {
+  alert('종료된 채널')
+})
 
 function connectToNewUser(userId, stream) {
   const call = myPeer.call(userId, stream);
