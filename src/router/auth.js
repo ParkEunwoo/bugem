@@ -1,9 +1,12 @@
 const express = require('express'); 
 const router = express.Router();
-const {passport} = require('./../passport');
+const {passport, isAuthenticated} = require('./../passport');
 const {createUser, isExistId, isExistName} = require('./../model/User/resolver')
 const path = require('path')
 
+router.get('/session', isAuthenticated(), (req, res) => {
+  res.json(req.user.name);
+})
 router.get('/login', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../public/login.html'));
 })

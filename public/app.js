@@ -1,5 +1,9 @@
-const ROOM_ID = location.pathname.substring(1);
+const ROOM_ID = location.pathname.split('/').pop();
 const socket = io("/");
+let name;
+fetch('/auth/session').then(response => response.json()).then(data => {
+  name = data;
+})
 
 const myPeer = new Peer(undefined, {
   host: "/",
@@ -11,7 +15,7 @@ const myVideo = document.createElement("video");
 myVideo.muted = true;
 
 myPeer.on("open", (id) => {
-  socket.emit("join-room", ROOM_ID, id);
+  socket.emit("join-room", ROOM_ID, id, name);
 });
 
 const $messageList = document.getElementById('message-list');
@@ -19,7 +23,7 @@ const $sendMessage = document.getElementById('send-message');
 const $sendButton = document.getElementById('send-button');
 
 $sendButton.addEventListener('click', () => {
-  socket.emit('chat-message', 'hh', $sendMessage.value)
+  socket.emit('chat-message', name, $sendMessage.value)
   appendMessage("hh", $sendMessage.value)
   $sendMessage.value = '';
 })
