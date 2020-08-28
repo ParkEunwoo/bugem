@@ -5,7 +5,7 @@ class Channel {
     this.id = uuidV4();
     this.title = title;
     this.category = category;
-    this.thumbnail = `/thumbnail/${user.name}`;
+    this.thumbnail = `/thumbnail/${user.name}.png`;
     this.host = user;
     this.viewerList = {};
   }
