@@ -13,7 +13,7 @@ router.get('/login', (req, res) => {
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
   res.redirect('/');
 })
-router.get("/logout", (req, res, next) => {
+router.post("/logout", (req, res, next) => {
   // 로그아웃
   req.logout()
 
