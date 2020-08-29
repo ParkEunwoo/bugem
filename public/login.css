@@ -20,21 +20,21 @@
 }
 .id-input:focus-within {
   outline: none;
-  border-color: #00796b;
+  border-color: #0F4C81;
 }
 .password-input:hover {
   border-color: black;
 }
 .password-input:focus-within {
   outline: none;
-  border-color: #00796b;
+  border-color: #0F4C81;
 }
 .login-button {
   border: 1px solid black;
   background-color: white;
-  border-color: #00796b;
+  border-color: #0F4C81;
   border-radius: 0.2em;
-  color: #00796b;
+  color: #0F4C81;
   padding: 0.5em;
   margin: 0.5rem 1rem;
   font-size: 1rem;
@@ -48,13 +48,13 @@
   text-align: center;
 }
 .register-link:link {
-  color: #00796b;
+  color: #0F4C81;
   text-decoration: none;
   font-size: 0.75rem;
 }
 
 .register-link:visited {
-  color: #00796b;
+  color: #0F4C81;
   text-decoration: none;
   font-size: 0.75rem;
 }

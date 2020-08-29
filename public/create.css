@@ -64,7 +64,7 @@ body {
   border-color: black;
 }
 .title-form:focus-within {
-  border-color: #00796b;
+  border-color: #0F4C81;
 }
 
 .title-input {
@@ -78,14 +78,14 @@ body {
   margin: 2rem 1rem;
   font-size: 1.5rem;
   padding: 0.4em;
-  outline-color: #00796b;
+  outline-color: #0F4C81;
 }
 
 .create-button {
   background: white;
   border: 1px solid black;
-  border-color: #00796b;
-  color: #00796b;
+  border-color: #0F4C81;
+  color: #0F4C81;
   font-size: 1.5rem;
   padding: 0.4em;
   margin: 0 1rem;
