@@ -2,10 +2,7 @@ const ROOM_ID = location.pathname.split('/').pop();
 const socket = io("/");
 let name;
 
-const myPeer = new Peer(undefined, {
-  host: "/",
-  port: "3001",
-});
+const myPeer = new Peer();
 const peers = {};
 
 const myVideo = document.createElement("audio");
