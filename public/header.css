@@ -6,7 +6,11 @@
   background: #0F4C81;
   color: white;
 }
-
+.logo {
+  height: 2.4rem;
+  vertical-align: middle;
+  margin: 0 0.6rem;
+}
 .search-form {
   margin: 0 1rem;
   border: 1px solid #dadce0;
