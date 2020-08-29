@@ -1,5 +1,3 @@
-
-
 function channelHtml(channel) {
   return `<a href="/channel/join/${channel.id}" class="channel-wrapper">
   <div class="channel">
@@ -10,33 +8,40 @@ function channelHtml(channel) {
       <h4>시청자 수 ${Object.keys(channel.viewerList).length}</h4>
     </div>
   </div>
-</a>`
+</a>`;
 }
 
 function getChannelList($target, url) {
-  fetch(url).then(response => response.json()).then(data => {
-    if(Array.isArray(data)) {
-      $target.innerHTML = data.reduce((htmlString, channel) => `${htmlString}${channelHtml(channel)}`, '')
-    }
-  })
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      if (Array.isArray(data)) {
+        $target.innerHTML = data.reduce(
+          (htmlString, channel) => `${htmlString}${channelHtml(channel)}`,
+          ""
+        );
+      }
+    });
 }
 
-const $recommandContainer = document.getElementById('recommand-channel');
-getChannelList($recommandContainer, '/channel/recommand-list')
+const $recommandContainer = document.getElementById("recommand-channel");
+getChannelList($recommandContainer, "/channel/recommand-list");
 
-const $categoryContainer = document.getElementById('category-channel');
-const CATEGORY_LIST = ["hiphop"]
-getChannelList($recommandContainer, '/channel/category/hiphop')
+const CATEGORY_LIST = ["warm", "strong", "miss", "romance", "sentimental"];
+CATEGORY_LIST.forEach((category) => {
+  const $categoryContainer = document.getElementById(`${category}-channel`);
+  getChannelList($categoryContainer, `/channel/category/${category}`);
+});
 
-const $searchButton = document.getElementById('search-submit');
-const $searchInput = document.getElementById('search-input');
-const $searchContainer = document.getElementById('search-channel')
+const $searchButton = document.getElementById("search-submit");
+const $searchInput = document.getElementById("search-input");
+const $searchContainer = document.getElementById("search-channel");
 
-window.addEventListener('keypress', e => {
-  if(e.key === 'Enter') {
+window.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
     getChannelList($searchContainer, `/channel/search/${$searchInput.value}`);
   }
-})
-$searchButton.addEventListener('click', () => {
+});
+$searchButton.addEventListener("click", () => {
   getChannelList($searchContainer, `/channel/search/${$searchInput.value}`);
-})
+});
