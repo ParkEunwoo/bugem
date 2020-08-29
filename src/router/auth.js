@@ -7,9 +7,7 @@ const path = require('path')
 router.get('/session', isAuthenticated(), (req, res) => {
   res.json(req.user.name);
 })
-router.get('/login', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../../public/login.html'));
-})
+
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
   res.redirect('/');
 })
@@ -20,9 +18,6 @@ router.post("/logout", (req, res, next) => {
   res.redirect('/')
 })
 
-router.get('/register', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../../public/register.html'));
-})
 router.post('/register', (req, res) => {
   const user = {
     name: req.body.name,
@@ -30,7 +25,7 @@ router.post('/register', (req, res) => {
     userPw: req.body.password,
   }
   createUser(user);
-  res.redirect('/auth/login')
+  res.redirect('/')
 })
 
 router.get('/check/userid/:userid', async (req, res) => {

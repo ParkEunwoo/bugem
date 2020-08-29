@@ -1,7 +1,22 @@
+#login-modal {
+  background: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .login-form {
   display: flex;
   flex-direction: column;
   width: 30ch;
+  background: white;
+  padding: 2rem;
+  border: 1px solid #0F4C81;
 }
 .id-input {
   border: 1px solid #dadce0;
@@ -46,11 +61,13 @@
 .register-container {
   width: 30ch;
   text-align: center;
+  cursor: pointer;
 }
 .register-link:link {
   color: #0F4C81;
   text-decoration: none;
   font-size: 0.75rem;
+
 }
 
 .register-link:visited {
