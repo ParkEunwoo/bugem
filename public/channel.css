@@ -49,7 +49,7 @@ body {
   border-color: black;
 }
 .chat-input-form:focus-within {
-  border-color: #00796b;
+  border-color: #0F4C81;
 }
 
 .chat-input-input {
@@ -80,7 +80,7 @@ body {
   color: #dadce0;
 }
 #send-button:enabled i {
-  color: #00796b;
+  color: #0F4C81;
 }
 
 .message-list {
