@@ -12,7 +12,7 @@ const options = {
   cert: fs.readFileSync("/etc/letsencrypt/live/showyourstory.tk/cert.pem"),
 };
 
-http.createServer(app).listen(80);
+http.createServer(require('redirect-https')(), app).listen(80);
 const server = https.createServer(options, app);
 
 const { connectSocket } = require("./socket.js");
