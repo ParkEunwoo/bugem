@@ -8,61 +8,63 @@
     <script src="/register.js" defer></script>
   </head>
   <body>
-    <form
-      action="/auth/register"
-      method="post"
-      id="register-form"
-      class="register-form"
-    >
-      <div id="id-container" class="register-input-form">
+    <div id="register-modal">
+      <form
+        action="/auth/register"
+        method="post"
+        id="register-form"
+        class="register-form"
+      >
+        <div id="id-container" class="register-input-form">
+          <input
+            id="id-input"
+            type="text"
+            name="username"
+            placeholder="아이디"
+            autocomplete="false"
+            class="register-input"
+          />
+        </div>
+        <div id="id-check"></div>
+        <div id="name-container" class="register-input-form">
+          <input
+            id="name-input"
+            type="text"
+            name="name"
+            placeholder="닉네임"
+            autocomplete="false"
+            class="register-input"
+          />
+        </div>
+        <div id="name-check"></div>
+        <div id="password-container" class="register-input-form">
+          <input
+            id="password-input"
+            type="password"
+            name="password"
+            placeholder="비밀번호"
+            autocomplete="false"
+            class="register-input"
+          />
+        </div>
+        <div id="password-check-container" class="register-input-form">
+          <input
+            id="repassword-input"
+            type="password"
+            name="repassword"
+            placeholder="비밀번호 확인"
+            autocomplete="false"
+            class="register-input"
+          />
+        </div>
+        <div id="password-check"></div>
         <input
-          id="id-input"
-          type="text"
-          name="username"
-          placeholder="아이디"
-          autocomplete="false"
-          class="register-input"
+          type="submit"
+          value="회원가입"
+          id="submit-button"
+          class="submit-button"
         />
-      </div>
-      <div id="id-check"></div>
-      <div id="name-container" class="register-input-form">
-        <input
-          id="name-input"
-          type="text"
-          name="name"
-          placeholder="닉네임"
-          autocomplete="false"
-          class="register-input"
-        />
-      </div>
-      <div id="name-check"></div>
-      <div id="password-container" class="register-input-form">
-        <input
-          id="password-input"
-          type="password"
-          name="password"
-          placeholder="비밀번호"
-          autocomplete="false"
-          class="register-input"
-        />
-      </div>
-      <div id="password-check-container" class="register-input-form">
-        <input
-          id="repassword-input"
-          type="password"
-          name="repassword"
-          placeholder="비밀번호 확인"
-          autocomplete="false"
-          class="register-input"
-        />
-      </div>
-      <div id="password-check"></div>
-      <input
-        type="submit"
-        value="회원가입"
-        id="submit-button"
-        class="submit-button"
-      />
-    </form>
+      </form>
+    </div>
   </body>
 </html>

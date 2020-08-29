@@ -5,6 +5,10 @@ $loginModal.addEventListener('click', e => {
   if(e.target.id === 'login-modal') {
     closeLoginModal();
   }
+  if(e.target.id === 'register' || e.target.className === 'register-link') {
+    showRegisterModal();
+    closeLoginModal();
+  }
 });
 
 function showLoginModal() {

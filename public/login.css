@@ -61,11 +61,13 @@
 .register-container {
   width: 30ch;
   text-align: center;
+  cursor: pointer;
 }
 .register-link:link {
   color: #0F4C81;
   text-decoration: none;
   font-size: 0.75rem;
+
 }
 
 .register-link:visited {
