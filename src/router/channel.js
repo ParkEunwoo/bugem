@@ -28,6 +28,13 @@ router.post("/create", isAuthenticated(), upload.single('thumbnail'), (req, res)
   res.redirect(`/channel/join/${id}`);
 });
 
+router.get('/ishost/:name', isAuthenticated(), (req, res) => {
+  if(req.user.name === req.params.name) {
+    res.json(true);
+  } else {
+    res.json(false);
+  }
+})
 router.get("/join/:channelId", isAuthenticated(), (req, res) => {
   res.sendFile(path.resolve(__dirname, "../../public/channel.html"));
 });
