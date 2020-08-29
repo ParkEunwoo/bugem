@@ -8,7 +8,7 @@ const myPeer = new Peer(undefined, {
 });
 const peers = {};
 
-const myVideo = document.createElement("video");
+const myVideo = document.createElement("audio");
 myVideo.muted = true;
 
 myPeer.on("open", (id) => {
@@ -16,6 +16,24 @@ myPeer.on("open", (id) => {
     name = data;
   }).then(() => {
     socket.emit("join-room", ROOM_ID, id, name);
+  }).then(() => {
+    fetch(`/channel/ishost/${name}`).then(response => response.json()).then(isHost => {
+      if(isHost) {
+        navigator.mediaDevices
+        .getUserMedia({
+          video: false,
+          audio: true,
+        })
+        .then((stream) => {
+          addVideoStream(myVideo, stream);
+    
+          socket.on("user-connected", (userId) => {
+            connectToNewUser(userId, stream);
+          });
+        })
+        .catch((error) => console.error(error));
+      }
+    })
   })
 });
 
@@ -81,7 +99,7 @@ if(isHost) {
 else {
   myPeer.on("call", (call) => {
     call.answer()
-    const userVideo = document.createElement("video");
+    const userVideo = document.createElement("audio");
 
     call.on("stream", (userVideoStream) => {
       addVideoStream(userVideo, userVideoStream);
@@ -95,11 +113,12 @@ socket.on("user-disconnected", (userId) => {
 });
 socket.on('close-room', () => {
   alert('종료된 채널')
+  location.href = '/';
 })
 
 function connectToNewUser(userId, stream) {
   const call = myPeer.call(userId, stream);
-  const userVideo = document.createElement("video");
+  const userVideo = document.createElement("audio");
 
   call.on("stream", (userVideoStream) => {
     addVideoStream(userVideo, userVideoStream);

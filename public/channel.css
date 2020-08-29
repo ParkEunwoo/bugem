@@ -18,15 +18,14 @@ body {
 }
 
 .thumbnail{
-  width: 50vw;
-  height: 50vw;
+  width: 60vh;
+  height: 60vh;
   max-width: 500px;
   max-height: 500px;
 }
 .info {
   display: flex;
 }
-
 
 
 .chat-container {
