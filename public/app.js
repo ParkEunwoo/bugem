@@ -128,5 +128,5 @@ function addVideoStream(video, stream) {
   video.addEventListener("loadedmetadata", () => {
     video.play();
   });
-  videoContainer.append(video);
+  $channelContainer.append(video);
 }

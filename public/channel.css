@@ -1,7 +1,12 @@
 body {
-  display: flex;
   margin: 0;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.main-container {
+  flex: 1;
+  display: flex;
 }
 #channel-container {
   flex: 1;
@@ -11,8 +16,7 @@ body {
   align-items: center;
   flex-direction: column;
 }
-.title {
-}
+
 .thumbnail{
   width: 50vw;
   height: 50vw;
@@ -22,12 +26,8 @@ body {
 .info {
   display: flex;
 }
-.category{
 
-}
-.viewers {
 
-}
 
 .chat-container {
   display: flex;
